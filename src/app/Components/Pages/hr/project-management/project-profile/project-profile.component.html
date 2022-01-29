@@ -1,0 +1,72 @@
+<div id="user-profile-section" [hidden]="isLoading" class="bormain">
+    <div class="text-right">
+        <button mat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <h1 class="text-center">
+            <mat-icon>account_circle</mat-icon>
+            {{ProjectDetails.ProjectName}}
+        </h1>
+        <h1 class="text-center iconcss">
+            <mat-icon matTooltip="Edit" class="pointer edit-btn" (click)="enableEdit()">create</mat-icon>
+            <mat-icon matTooltip="Delete" class="pointer delete-btn" mat-dialog-close
+             (click)="deleteUser()">delete</mat-icon>
+        </h1>
+        <form [formGroup]="ProjectProfile" class="formcss">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Project Name
+                        </mat-label>
+                        <input type="text" matInput id="ProjectName" formControlName="ProjectName" [value]="ProjectDetails.ProjectName"
+                            placeholder="Project Name">
+                    </mat-form-field >
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Project Lead
+                        </mat-label>
+                        <input type="text" matInput id="ProjectMentor" formControlName="ProjectMentor" [value]="ProjectDetails.ProjectMentor"
+                            placeholder="Project Lead" (blur)="checkEmail($event)">
+                    </mat-form-field >
+                    <p class="highlight" *ngIf="ProjectEmailValidation == 'checking'">Checking Email ID...</p>
+                    <p class="highlight" *ngIf="ProjectEmailValidation == 'invalid'">Invalid Email ID</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>
+                                Project Description
+                            </mat-label>
+                            <input type="text" matInput id="ProjectDescription" 
+                            formControlName="ProjectDescription" [value]="ProjectDetails.ProjectDescription"
+                                placeholder="ProjectDescription">
+                        </mat-form-field >
+                    </div>
+                </div>
+            </div>
+            <div class="row" [hidden]="formDisabled">
+                <div class="col-sm-12">
+                    <div class="center hhcss">
+                        <button type="submit" class="btn btn-dark"
+                        (click)="changeProjectDetails()" 
+                        [disabled]="!ProjectProfile || ProjectEmailValidation != 'valid'">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </mat-dialog-content>
+</div>
+<div class="loadingArea center" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>

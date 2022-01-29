@@ -1,0 +1,42 @@
+
+<div class="borderra">
+    <h1 class="center headercss"></h1>
+    <div class="container center maincss">
+        <form [formGroup]="holidayprofile">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>
+                            Start Date
+                        </mat-label>
+                        <input type="date" matInput id="StartDate" formControlName="StartDate" placeholder="Start Date">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>End Date</mat-label>
+                        <input matInput type="date" id="EndDate" formControlName="EndDate" placeholder="End Date"
+                            placeholder="Enter End Date">
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field class="desc">
+                        <input matInput type="text" id="Description" formControlName="Description"
+                            placeholder="Description">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="center">
+                        <button type="submit" class="btn btn-dark" [disabled]="!holidayprofile.valid"
+                            (click)="holidayadd()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

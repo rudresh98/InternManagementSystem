@@ -1,0 +1,48 @@
+.row {
+  margin: 0;
+}
+
+.heading {
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif !important;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 20px 10px 10px 10px;
+
+}
+.col-sm-12{
+  font-family: 'Montserrat', sans-serif !important;
+
+}
+.statusBox {
+  padding-top: 20px;
+}
+
+.currentDate {
+  padding: 10px 10px 10px 40px;
+  font-size: 30px;
+  line-height: 2;
+}
+.section{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+.btn-outline-secondary{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-outline-success{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-outline-danger{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

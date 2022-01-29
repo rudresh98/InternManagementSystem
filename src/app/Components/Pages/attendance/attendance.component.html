@@ -1,0 +1,36 @@
+<section class="page-content" class="d-flex flex-column full-height">
+    <h1 class="heading">Attendance</h1>
+    <div class="mb-auto statusBox" *ngIf="IsWorkingDay">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 center">
+                <button class="btn btn-outline-secondary" *ngIf="isCheckInLoading" disabled>
+                    <i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Please Wait</button>
+                <button class="btn btn-outline-success" *ngIf="attendanceStatus == 'NotCheckedIn' && !isCheckInLoading"
+                    (click)="updateAttendanceStatus('checkin')">
+                    <mat-icon>alarm_on</mat-icon>
+                    <span> CheckIn</span>
+                </button>
+                <button class="btn btn-outline-danger" *ngIf="attendanceStatus == 'CheckedIn' && !isCheckInLoading"
+                    (click)="updateAttendanceStatus('checkout')">
+                    <mat-icon>alarm</mat-icon>
+                    CheckOut
+                </button>
+                <button class="btn btn-outline-secondary" *ngIf="attendanceStatus == 'CheckedOut' && !isCheckInLoading"
+                    disabled>
+                    <mat-icon>alarm_off</mat-icon>
+                    Checked
+                    Out
+                </button>
+            </div>
+            <div class="col-md-6 col-sm-12 currentDate">
+                <countup-timer *ngIf="showTimer" [countUpTimerConfig]="testConfig"></countup-timer>
+                <span *ngIf="!showTimer">{{workingTime}}</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="col-12">
+            <app-attendance-history #appAttendanceHistory></app-attendance-history>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+<p class="heading">Regularization</p>
+<div [hidden]="isLoading" class="tablecss">
+  <div class="searchcss">
+    <mat-form-field appearance="outline" style="width: 40%;">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>Search </mat-label>
+      <input matInput placeholder="Search " (input)="DoFilter($event)" type="text">
+      <!-- <mat-hint>Enter Intern Email,Name</mat-hint> -->
+    </mat-form-field>
+  </div>
+  <!-- Mentor Side -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="UserId">
+      <th mat-header-cell *matHeaderCellDef> User Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.UserID}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="FullName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.FullName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ApprovalStatus">
+      <th mat-header-cell *matHeaderCellDef> Approval Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.ApprovalStatus}} </td>
+    </ng-container>
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="CreatedOn">
+      <th mat-header-cell *matHeaderCellDef> Created On </th>
+      <td mat-cell *matCellDef="let element"> {{element.CreatedOn}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="CheckIn">
+      <th mat-header-cell *matHeaderCellDef> Check In </th>
+      <td mat-cell *matCellDef="let element"> {{element.CheckIn | date: "hh:mm:ss a"}} </td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="actionbtn">
+        <button (click)="oninternstatus(element,'Approved')" class="btn">
+          <mat-icon class="clickicon">done_outline</mat-icon>
+        </button>
+        <button (click)="oninternstatus(element,'Disapproved')" class="btn">
+          <mat-icon class="crossicon">clear</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5,10]" showFirstLastButtons class="mat-elevation-z8"></mat-paginator>
+
+</div>

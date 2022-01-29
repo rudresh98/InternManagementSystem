@@ -1,0 +1,75 @@
+<section class="page-content d-flex flex-column full-height">
+    <p class="heading">Attendance - {{userId}}</p>
+
+    <div [hidden]="isLoading" class="tablecss" class="mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Date Column -->
+            <ng-container matColumnDef="Date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Date | date:'dd/MM/yyyy'}} </mat-cell>
+            </ng-container>
+
+            <!-- CheckIn Column -->
+            <ng-container matColumnDef="CheckIn">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> CheckIn </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.CheckIn | date:'hh:mm:ss a'}} </mat-cell>
+            </ng-container>
+
+            <!-- CheckOut Column -->
+            <ng-container matColumnDef="CheckOut">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> CheckOut </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.CheckOut | date:'hh:mm:ss a'}} </mat-cell>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="Status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Status}} </mat-cell>
+            </ng-container>
+
+            <!-- Task Update Column -->
+            <ng-container matColumnDef="Update">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Task Update </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button type="button" class="btn btn-dark custombtn mr-1 leave-app float-right" data-toggle="modal"
+                        data-target="#leaveApplication" (click)="showmodal(element)" >
+                        View 
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator pageSize="5" showFirstLastButtons></mat-paginator>
+    </div>
+
+
+    <div class="loadingArea center" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+</section>
+<div class="modal" id="leaveApplication" tabindex="-1" role="dialog" [ngClass]="{'show':showModal}">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Task Update </h1>
+                
+                <!-- <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close" (click)="showModal=false">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <h3>
+                    {{listmodaltask}}
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="submit" class="btn btn-success pull-left">Apply</button> -->
+                <button type="button" class="btn btn-dark" data-dismiss="modal"
+                    (click)="showModal=false">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

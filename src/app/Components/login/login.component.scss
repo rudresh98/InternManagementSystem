@@ -1,0 +1,43 @@
+.login-page {
+  .container {
+    padding: 100px 0 0 0;
+    .row {
+      .center {
+        text-align: center;
+      }
+      .logo {
+        img {
+          width: 250px;
+        }
+      }
+      .form-contanier {
+        margin: 50px 10px;
+        form {
+          max-width: 400px;
+          margin: auto;
+          mat-form-field.mat-form-field {
+            width: 100%;
+          }
+        }
+        .or {
+          font-size: 20px;
+          margin: 20px;
+          font-weight: 500;
+          color: lightgray;
+          span {
+            margin: 0 10px;
+          }
+        }
+        .sso-btn{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.forget{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

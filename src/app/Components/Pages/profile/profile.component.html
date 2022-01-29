@@ -1,0 +1,32 @@
+<section>
+    <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="img-box">
+                    <img src="assets/img/dp.jpg" alt="profile_img" class="img-fluid profile-img">
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="profile-content">
+                    <h1 class="heading">{{profileData.FirstName}} {{profileData.MiddleName}} {{profileData.LastName}} </h1>
+                    <div>
+                        <p class="text-muted"><b>User ID :</b>  {{profileData.UserID}}</p>
+                        <p class="text-muted"><b>Personal Email :</b> {{profileData.EmailAddress}}</p>
+                        <p class="text-muted"><b>Office Email : </b>{{profileData.OrganizationEmailAddress}}</p>
+                        <p class="text-muted"><b>Date of Joining :</b> {{datejoining}}</p>
+                        <p class="text-muted"><b>Mentor :</b> {{profileData.Mentor}}</p>
+                        <p class="text-muted"><b>Contact Number : </b>{{profileData.ContactNo}}</p>
+                        <p class="text-muted" *ngIf="profileData.Projects.length != 0">
+                            <b>Projects :</b>
+                            <ul class="text-muted">
+                                <li *ngFor="let project of profileData.Projects"><b>{{project.ProjectName}}</b> - {{project.ReportingManager}}</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

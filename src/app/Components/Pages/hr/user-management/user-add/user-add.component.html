@@ -1,0 +1,185 @@
+<mat-dialog-content class="mat-typography">
+    <div class="borderra">
+        <h1 class="center headercss">
+            Enter the Intern Details
+        </h1>
+        <div class="container center maincss">
+            <form [formGroup]="userprofile">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Role</mat-label>
+                            <input matInput type="text" value="role" id="role" formControlName="role" placeholder="Role"
+                                readonly required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" value="firstname" id="firstname" formControlName="firstname"
+                                [(ngModel)]="showpass" placeholder="First Name" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Middle Name</mat-label>
+                            <input matInput type="text" value="middlename" id="middlename" formControlName="middlename"
+                                placeholder="Middle Name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" value="lastname" id="lastname" formControlName="lastname"
+                                placeholder="Last Name" required>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact No</mat-label>
+                            <input matInput type="text" value="contactno" id="contactno" formControlName="contactno"
+                                minlength="10" maxlength="10" placeholder="Contact No">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label> Email</mat-label>
+                            <input matInput type="text" value="emailAddress" id="emailAddress"
+                                formControlName="emailAddress" placeholder="Email" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Org Email</mat-label>
+                            <input matInput type="text" value="organizationalEmailAddress"
+                                id="organizationalEmailAddress" formControlName="organizationalEmailAddress"
+                                placeholder="Org Email" (blur)="checkEmail('orgEmail',$event)">
+                        </mat-form-field>
+                        <!-- <p class="highlight" *ngIf="orgEmailChecking">Checking Email ID...</p> -->
+                        <p class="highlight" *ngIf="orgEmailValidation == 'checking'">Checking Email ID...</p>
+                        <p class="highlight" *ngIf="orgEmailValidation == 'invalid'">Invalid Email ID</p>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Date Of Joining</mat-label>
+                            <input matInput type="date" value="dateOfJoining" id="dateOfJoining"
+                                formControlName="dateOfJoining" placeholder="Date Of Joining" required>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mentor Email</mat-label>
+                            <input matInput type="text" value="mentor" id="mentor" formControlName="mentor"
+                                placeholder="Mentor Email" (blur)="checkEmail('mentorEmail',$event)" required>
+                        </mat-form-field>
+                        <!-- <p class="highlight" *ngIf="mentorEmailChecking">Checking Email ID...</p> -->
+                        <p class="highlight" *ngIf="mentorEmailValidation == 'checking'">Checking Email ID...</p>
+                        <p class="highlight" *ngIf="mentorEmailValidation == 'invalid'">Invalid Email ID</p>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="pass">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" value="{{showpass}}@123" id="password"
+                                formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Projects</h2>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button mat-button type="button" (click)="addNext()"><i
+                                class="fa fa-plus fa-lg add-sign"></i></button>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Current Project</mat-label>
+                        <input type="text" matInput placeholder="Current Project" formControlName="currentProject"
+                            required [matAutocomplete]="autoGroup">
+                        <mat-autocomplete #autoGroup="matAutocomplete" multiple>
+                            <mat-option *ngFor="let project of filterProjects | async" [value]="project">
+                                {{project}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Project Mentor</mat-label>
+                        <input matInput type="text" value="projectMentor" id="projectMentor"
+                            formControlName="projectMentor" placeholder="Project Mentor">
+                    </mat-form-field>
+                </div>
+            </div> -->
+
+
+                <div formArrayName="projects" *ngFor="let item of getProjectControls(); let i = index">
+                    <div [formGroupName]="i">
+                        <hr>
+                        <div class="text-right">
+                            <i *ngIf="getProjectControls().length > 0" class="fa fa-times subform-close"
+                                (click)="removeLink(i)"></i>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Current Project</mat-label>
+                                    <input type="text" matInput placeholder="Current Project"
+                                        formControlName="currentProject" [matAutocomplete]="autoGroup"
+                                        (focus)="initialFilterList($event)" required>
+                                    <mat-autocomplete [displayWith]="getOptionText" #autoGroup="matAutocomplete"
+                                        multiple>
+                                        <mat-option *ngFor="let project of filterProjects" [value]="project">
+                                            {{project.ProjectName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Project Mentor</mat-label>
+                                    <input matInput type="text" value="projectMentor" id="projectMentor"
+                                        formControlName="projectMentor" placeholder="Project Mentor"
+                                         (blur)="checkEmail('projMentorEmail',$event, i)" required>
+                                </mat-form-field>
+                                <!-- <p class="highlight" *ngIf="projMentorEmailChecking[i]">Checking Email ID...</p> -->
+                                <p class="highlight" *ngIf="projMentorEmailValidation[i] == 'checking'">Checking Email ID...</p>
+                                <p class="highlight" *ngIf="projMentorEmailValidation[i] == 'invalid'">Invalid Email ID</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="center hhcss">
+                            <button type="submit" class="btn btn-dark" [disabled]="!userprofile.valid || validateField()"
+                                (click)="userRegistration()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</mat-dialog-content>

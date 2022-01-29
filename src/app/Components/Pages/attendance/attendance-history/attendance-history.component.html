@@ -1,0 +1,63 @@
+<div [hidden]="isLoading" class="tablecss">
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- Date Column -->
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="ele">
+        {{ element.Date | date: "dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- CheckIn Column -->
+    <ng-container matColumnDef="CheckIn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        CheckIn
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="ele">
+        {{ element.CheckIn | date: "hh:mm:ss a" }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- CheckOut Column -->
+    <ng-container matColumnDef="CheckOut">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        CheckOut
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="ele">
+        {{ element.CheckOut | date: "hh:mm:ss a" }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="Duration">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Duration
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="ele">
+        {{ element.Duration }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Status
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="ele">
+        {{ element.Status }}
+      </mat-cell>
+    </ng-container>
+
+    
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator pageSize="5" showFirstLastButtons></mat-paginator>
+</div>
+
+<div class="loadingArea center" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>

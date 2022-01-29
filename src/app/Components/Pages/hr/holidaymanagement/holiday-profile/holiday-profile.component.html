@@ -1,0 +1,57 @@
+<div id="user-profile-section" [hidden]="isLoading" 
+class="bormain">
+    <div class="text-right">
+        <button mat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <h1 class="text-center">
+            <mat-icon>account_circle</mat-icon>
+            {{holidaydetails.holidaydesc}}
+        </h1>
+        <h1 class="text-center iconcss">
+            <mat-icon matTooltip="Edit" class="pointer edit-btn"
+             (click)="enableEdit()">create</mat-icon>
+            <mat-icon matTooltip="Delete" class="pointer delete-btn" mat-dialog-close
+             (click)="deleteHoliday()">delete</mat-icon>
+        </h1>
+        <form [formGroup]="Holidayprofile" class="formcss">
+            <div class="row">
+                <div class="col-sm-6" style="width: 100%;">
+                    <div class="center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Update Holiday </mat-label>
+                                <input matInput type="text" [value]="holidaydetails.holidaydesc"
+                                id="holidaydesc" formControlName="holidaydesc"
+                                placeholder="Holiday Desc">
+                        </mat-form-field>
+                    </div>
+                   
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Holiday Date</mat-label>
+                        <input matInput type="date" [value]="holidaydetails.HolidaysDate" id="HolidaysDate"
+                            formControlName="HolidaysDate" placeholder="Holiday Date">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" [hidden]="formDisabled">
+                <div class="col-sm-12">
+                    <div class="center hhcss">
+                        <button type="submit" class="btn btn-dark" (click)="changeHolidayDetails()">
+                            <!-- <mat-icon>done</mat-icon> -->
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </mat-dialog-content>
+</div>
+<div class="loadingArea center" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>

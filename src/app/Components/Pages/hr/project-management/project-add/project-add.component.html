@@ -1,0 +1,54 @@
+<div class="conatainer">
+    <div class="row center heading">
+        <p>Add Project Here</p>
+    </div>
+    <form [formGroup]="Projectprofile">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>
+                        Project Name
+                    </mat-label>
+                    <input type="text" matInput id="ProjectName" formControlName="ProjectName"
+                        placeholder="Project Name">
+                </mat-form-field >
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>
+                        Project Lead
+                    </mat-label>
+                    <input type="text" matInput id="ProjectMentor" formControlName="ProjectMentor"
+                    (blur)="checkEmail($event)"
+                        placeholder="Project Lead">
+                </mat-form-field >
+                <p class="highlight" *ngIf="ProjectEmailValidation == 'checking'">Checking Email ID...</p>
+                <p class="highlight" *ngIf="ProjectEmailValidation == 'invalid'">Invalid Email ID</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Project Description
+                        </mat-label>
+                        <input type="text" matInput id="ProjectDescription" 
+                        formControlName="ProjectDescription"
+                            placeholder="ProjectDescription">
+                    </mat-form-field >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="center">
+                    <button class="btn btn-dark" 
+                    [disabled]="!Projectprofile.valid || ProjectEmailValidation != 'valid'"
+                    (click)="projectadd()">Submit</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

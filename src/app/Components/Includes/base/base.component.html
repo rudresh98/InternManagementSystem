@@ -1,0 +1,93 @@
+<header class="main-head">
+  <nav class="head-nav">
+    <ul class="menu">
+      <li routerLinkActive="active-p" [routerLinkActiveOptions]="{ exact: true }">
+        <a href="http://justinfarrow.com" routerLink="/" routerLinkActive="active-link">
+          <i class="fa fa-home fa-2x"></i>
+          <span class="nav-text"> Home </span>
+        </a>
+      </li>
+      <li routerLinkActive="active-p">
+        <a routerLink="/attendance" routerLinkActive="active-link" *ngIf="checkrole == 'Intern'">
+          <i class="fa fa-laptop fa-2x"></i>
+          <span class="nav-text"> Attendance </span>
+        </a>
+        <a routerLink="/approveintern" routerLinkActive="active-link" *ngIf="checkrole == 'Mentor'">
+          <i class="fa fa-laptop fa-2x"></i>
+          <span class="nav-text"> Approved Request </span>
+        </a>
+        <a routerLink="/user-management" routerLinkActive="active-link" *ngIf="checkrole == 'HR'">
+          <i class="fa fa-laptop fa-2x"></i>
+          <span class="nav-text"> User Management </span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/holiday" routerLinkActive="active-link" *ngIf="checkrole == 'HR'">
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+          <span class="nav-text"> Holiday Management </span>
+        </a>
+      </li>
+      <li>
+        <a href="" routerLink="RegularizationHR" routerLinkActive="router-link-active" *ngIf="checkrole == 'HR'">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span class="nav-text"> Regularization </span></a>
+      </li>
+      <li>
+        <a href="" routerLink="ProjectManagment" routerLinkActive="router-link-active" *ngIf="checkrole == 'HR'">
+          <i class="fa fa-th" aria-hidden="true"></i>
+          <span class="nav-text"> Project Management</span></a>
+      </li>
+      <!--  starts mentor regularization -->
+      <li>
+        <a href="" routerLink="RegularizationMentor" routerLinkActive="router-link-active" *ngIf="checkrole == 'Mentor'">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span class="nav-text"> Regularization</span></a>
+      </li>
+      <!-- mentor regularizarion ends -->
+    </ul>
+  </nav>
+</header>
+<!-- //main-head -->
+
+<div class="wrap-all-the-things">
+  <div class="header" style="width: 100%;">
+    <a class="customlogo" [routerLink]="['/']">
+      <!-- <img src="../../../../assets/img/ct.png" alt="" srcset="" class="ctimage">  -->
+      Intern Management System</a>
+    <div class="header-right">
+      <div>
+
+        <!-- <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" (click)="toggle()" /> -->
+
+        <div (click)="toggle()" class="hamtoggle afterbtn" style="cursor: pointer;">
+          <!-- <div class="hamburger"></div>
+          <div class="hamburger"></div>
+          <div class="hamburger"></div> -->
+          <img src="../../../../assets/svg/rightnavicon.svg" alt="" srcset="" class="rightnav">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="boxshadow">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- right nav -->
+  <div id="mySidenav" class="sidenav" [ngStyle]="{'width':navopen?'330px':'0px'}">
+    <a class="imagecss">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" />
+      <a disabled class="dropdown-item mt-3">
+        <p> Hi ,<b style="color: lightgrey;text-transform: uppercase;">{{ firstName }} {{ lastName }}</b></p>
+      </a>
+      <!-- <a class="closebtn" (click)="toggle()">&times;</a> -->
+      <a class="dropdown-item" [routerLink]="['/profile']" style="cursor: pointer;" *ngIf="checkrole == 'Intern'"> View
+        Profile </a>
+      <a class="dropdown-item" (click)="openUserProfile()" style="cursor: pointer;" *ngIf="checkrole == 'Intern'">
+        Change
+        Password </a>
+      <a class="dropdown-item" (click)="logout()" style="cursor: pointer;"> Logout</a>
+    </a>
+
+
+
+  </div>
+</div>

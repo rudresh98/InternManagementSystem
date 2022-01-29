@@ -1,0 +1,35 @@
+.user-list-section{
+    padding: 20px;
+    .heading-area{
+        margin-left: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .heading{
+            font-size: 30px;
+        }
+        .add-sign{
+            padding: 0 10px;
+        }
+    }
+}
+span{
+    font-family: 'Montserrat', sans-serif !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container-fluid{
+    padding-top: 30px;
+}
+.custom-button{
+    margin-bottom: -30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+button{
+    margin-right: 35px;
+}

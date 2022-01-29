@@ -1,0 +1,39 @@
+.profile-btn {
+  margin: 0 5px;
+}
+
+.edit-btn {
+  margin: 5px;
+}
+.attendance-btn {
+  margin: 5px;
+}
+.delete-btn {
+  margin: 5px;
+}
+#user-profile-section ::ng-deep .mat-form-field {
+  width: 100%;
+}
+.iconcss{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.text-center{
+  font-family: 'Montserrat', sans-serif !important;
+
+  
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.highlight{
+  margin-top: -20px;
+  font-size: 10px;
+  margin-left: 10px;
+  letter-spacing: 1px;
+  color: brown;
+}

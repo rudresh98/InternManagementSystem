@@ -1,0 +1,169 @@
+.center {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+//  .lds-dual-ring {
+//   display: inline-block;
+//   width: 80px;
+//   height: 80px;
+//  }
+//  .lds-dual-ring:after {
+//   content: " ";
+//   display: block;
+//   width: 70px;
+//   height: 70px;
+//   margin: 8px;
+//   border-radius: 50%;
+//   border: 6px solid black;
+//   border-color: black transparent black transparent;
+//   animation: lds-dual-ring 1.2s linear infinite;
+//  }
+//  @keyframes lds-dual-ring {
+//   0% {
+//   transform: rotate(0deg);
+//   }
+//   100% {
+//   transform: rotate(360deg);
+//   }
+//  }
+
+
+
+//  .spinner-box {
+//   width: 300px;
+//   height: 300px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: transparent;
+// }
+
+ 
+
+// .circle-border {
+//   width: 70px;
+//   height: 70px;
+//   padding: 3px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 50%;
+//   background: #212121;
+//   background: linear-gradient(0deg, rgba(49, 49, 49, 0.1) 33%, rgb(31, 31, 31) 100%);
+//   animation: spin .8s linear 0s infinite;
+// }
+
+ 
+
+// .circle-core {
+//   width: 100%;
+//   height: 100%;
+//   background-color: white;
+//   border-radius:50%}
+
+// @keyframes spin {
+//   from {
+//     transform: rotate(0);
+//   }
+//   to{
+//     transform: rotate(359deg);
+//   }
+// }
+
+.mesh-loader {
+  overflow: hidden;
+  height: inherit;
+  width: inherit;
+}
+.mesh-loader .circle {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background: #212121;
+  border-radius: 50%;
+  margin: -15px;
+  -webkit-animation: mesh 3s ease-in-out infinite -1.5s;
+  animation: mesh 3s ease-in-out infinite -1.5s;
+}
+
+.mesh-loader > div .circle:last-child {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.mesh-loader > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.mesh-loader > div:last-child {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+
+
+
+@-webkit-keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.1% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.1% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+

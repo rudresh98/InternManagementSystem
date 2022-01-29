@@ -1,0 +1,53 @@
+<section class="login-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 center">
+                <div class="logo">
+                    <img src="assets/img/logo.png" class="img-fluid" alt="companyLogo">
+                </div>
+            </div>
+
+            <div class="col-12 form-contanier">
+                <div class="alert alert-danger" *ngIf="error">
+                    <p> {{error}} </p>
+                </div>
+                <div *ngIf="isLoading">
+                    <app-loading-spinner></app-loading-spinner>
+                </div>
+                <form novalidate [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="!isLoading">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email address</mat-label>
+                        <input formControlName="email" type="email" matInput placeholder="Enter email"
+                            autocomplete="off" email>
+                        <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput
+                            autocomplete="off" placeholder="Password">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+                    </mat-form-field>
+                    <!-- <div class=" forget">
+                        <a style="cursor: pointer;" (click)="openForgetPassword()">Forget Password</a>
+                        </div> -->
+                    <div class="center">
+
+                        <button type="submit" class="btn btn-dark" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                </form>
+                <div class="center or" *ngIf="!isLoading">
+                    <span style="color: black;font-weight: 700;">OR</span>
+                </div>
+                <div class="center" *ngIf="!isLoading">
+                    <a class="sso-btn" (click)="ssoAuth()">
+                        <img src="assets/svg/microsoftlogin.svg" alt="sso-img" class="img-fluid" width="200px" height="200px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

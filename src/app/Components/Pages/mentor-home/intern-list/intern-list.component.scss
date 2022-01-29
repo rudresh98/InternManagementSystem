@@ -1,0 +1,37 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-column-Status{
+    text-align: right;
+  }
+  
+  ::ng-deep .mat-header-row {
+    background-color: #266a96;
+  }
+  
+  ::ng-deep .mat-header-cell {
+    color: white !important;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #548cb1;
+  }
+  
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #266a96;
+  }
+  
+  ::ng-deep .mat-row:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+  }
+  .ele{
+  font-family: 'Montserrat', sans-serif !important;
+  }
+  .head{
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: #212121 !important;
+  }
+  
